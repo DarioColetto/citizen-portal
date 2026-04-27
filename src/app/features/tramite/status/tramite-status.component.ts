@@ -1,4 +1,5 @@
 import { Component, inject, signal } from '@angular/core';
+import { DatePipe } from '@angular/common';
 import { ReactiveFormsModule, FormControl, Validators } from '@angular/forms';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
@@ -16,6 +17,7 @@ import { dniValidator } from '../../../core/validators/tramite.validators';
   selector: 'app-tramite-status',
   standalone: true,
   imports: [
+    DatePipe,
     ReactiveFormsModule,
     MatFormFieldModule,
     MatInputModule,

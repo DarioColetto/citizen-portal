@@ -9,13 +9,10 @@ import { MatButtonModule } from '@angular/material/button';
 import { MatIconModule } from '@angular/material/icon';
 import { MatCardModule } from '@angular/material/card';
 import { ToastrService } from 'ngx-toastr';
-import * as pdfMake from 'pdfmake/build/pdfmake';
-import * as pdfFonts from 'pdfmake/build/vfs_fonts';
 import { NgxImageCompressService } from 'ngx-image-compress';
 import { TramiteService } from '../../../core/services/tramite.service';
+import { PdfService } from '../../../core/services/pdf.service';
 import { dniValidator, emailMatchValidator } from '../../../core/validators/tramite.validators';
-
-(pdfMake as any).vfs = (pdfFonts as any).pdfMake?.vfs;
 
 @Component({
   selector: 'app-tramite-new',
@@ -243,6 +240,7 @@ export class TramiteNewComponent {
   private router = inject(Router);
   private toastr = inject(ToastrService);
   private imageCompress = inject(NgxImageCompressService);
+  private pdfService = inject(PdfService);
 
   loading = signal(false);
 
@@ -324,7 +322,7 @@ export class TramiteNewComponent {
   }
 
   generateReceipt(id: number): void {
-    const docDef: any = {
+    const docDef = {
       content: [
         { text: 'Comprobante de trámite', style: 'header' },
         { text: `Número de trámite: #${id}`, style: 'subheader', margin: [0, 8, 0, 16] },
@@ -355,6 +353,6 @@ export class TramiteNewComponent {
       },
     };
 
-    (pdfMake as any).createPdf(docDef).download(`tramite-${id}.pdf`);
+    this.pdfService.download(docDef, `tramite-${id}.pdf`).catch(() => {});
   }
 }

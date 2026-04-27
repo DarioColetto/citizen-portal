@@ -40,7 +40,7 @@ import { KeycloakService } from 'keycloak-angular';
       </mat-sidenav>
       <mat-sidenav-content>
         <mat-toolbar color="primary">
-          <button mat-icon-button (click)="sidenavOpen.update(v => !v)">
+          <button mat-icon-button (click)="sidenavOpen.set(!sidenavOpen())">
             <mat-icon>menu</mat-icon>
           </button>
           <span>Portal Ciudadano</span>
