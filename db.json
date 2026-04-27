@@ -1,0 +1,48 @@
+{
+  "tramites": [
+    {
+      "id": 1,
+      "type": "habilitacion",
+      "title": "Habilitación local gastronómico",
+      "description": "Solicitud de habilitación para restaurante en Av. Corrientes 1234, CABA.",
+      "applicantName": "Roberto Fernández",
+      "applicantDni": "25678901",
+      "applicantEmail": "roberto@mail.com",
+      "address": "Av. Corrientes 1234, CABA",
+      "documents": [],
+      "status": "in-review",
+      "createdAt": "2026-03-15T10:30:00.000Z",
+      "updatedAt": "2026-04-01T14:00:00.000Z",
+      "notes": "Documentación en revisión por el área de habilitaciones."
+    },
+    {
+      "id": 2,
+      "type": "certificado",
+      "title": "Certificado de residencia",
+      "description": "Necesito certificado de residencia para trámite bancario.",
+      "applicantName": "Ana Martínez",
+      "applicantDni": "31234567",
+      "applicantEmail": "ana@mail.com",
+      "address": "Rivadavia 4567, CABA",
+      "documents": [],
+      "status": "approved",
+      "createdAt": "2026-03-20T09:00:00.000Z",
+      "updatedAt": "2026-04-05T11:00:00.000Z",
+      "notes": "Trámite aprobado. Retiro presencial: lunes a viernes 9-13hs."
+    },
+    {
+      "id": 3,
+      "type": "reclamo",
+      "title": "Reclamo por obra en vía pública",
+      "description": "Rotura de vereda frente al número 890 sin señalización de peligro.",
+      "applicantName": "Pedro López",
+      "applicantDni": "22345678",
+      "applicantEmail": "pedro@mail.com",
+      "address": "Scalabrini Ortiz 890, CABA",
+      "documents": [],
+      "status": "pending",
+      "createdAt": "2026-04-20T16:00:00.000Z",
+      "updatedAt": "2026-04-20T16:00:00.000Z"
+    }
+  ]
+}
