@@ -48,14 +48,44 @@ npm run start:dev    # Angular en :4200 con proxy
 
 ### Con Keycloak (Docker)
 
-```bash
-docker run -p 8080:8080 \
-  -e KC_BOOTSTRAP_ADMIN_USERNAME=admin \
-  -e KC_BOOTSTRAP_ADMIN_PASSWORD=admin \
-  quay.io/keycloak/keycloak:25.0 start-dev
+> Requiere Docker Desktop corriendo. En PowerShell usar una sola línea (no soporta `\` como continuación).
 
-# Crear realm: citizen-portal
-# Crear client: citizen-portal-app (public, redirect: http://localhost:4200/*)
+**1. Iniciar el contenedor**
+
+```powershell
+docker run -p 8080:8080 -e KEYCLOAK_ADMIN=admin -e KEYCLOAK_ADMIN_PASSWORD=admin quay.io/keycloak/keycloak:25.0 start-dev
+```
+
+> Nota: Keycloak 25 usa `KEYCLOAK_ADMIN` / `KEYCLOAK_ADMIN_PASSWORD`. Las variables `KC_BOOTSTRAP_ADMIN_*` son de Keycloak 26+.
+
+Esperar hasta ver en el log: `Keycloak 25.0.6 ... started in ...s`
+
+**2. Crear el Realm**
+
+1. Abrir `http://localhost:8080` → **Administration Console**
+2. Login: `admin` / `admin`
+3. Dropdown superior izquierdo (muestra "Keycloak") → **Create realm**
+4. Realm name: `citizen-portal` → **Create**
+
+**3. Crear el Client**
+
+1. Menú izquierdo → **Clients** → **Create client**
+2. Client ID: `citizen-portal-app` → **Next**
+3. Client authentication: **OFF** (cliente público) → **Next**
+4. Valid redirect URIs: `http://localhost:4200/*`
+5. Web origins: `http://localhost:4200` → **Save**
+
+**4. Crear un usuario de prueba**
+
+1. Menú izquierdo → **Users** → **Add user**
+2. Username: `testuser` → **Create**
+3. Tab **Credentials** → **Set password** → ingresar contraseña, desactivar "Temporary" → **Save password**
+
+**5. Correr la aplicación**
+
+```bash
+npm run mock-api     # json-server en :3000
+npm run start:dev    # Angular en :4200 con proxy
 ```
 
 ### Tests

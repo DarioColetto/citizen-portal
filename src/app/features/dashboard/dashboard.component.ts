@@ -100,35 +100,51 @@ import { KeycloakService } from 'keycloak-angular';
         display: flex;
         justify-content: space-between;
         align-items: flex-start;
-        margin-bottom: 24px;
+        margin-bottom: 28px;
       }
       h2 {
         margin: 0;
+        font-size: 1.5rem;
+        font-weight: 600;
         color: #0d47a1;
+        letter-spacing: -0.3px;
       }
       .subtitle {
-        color: #666;
+        color: #5f6368;
         margin: 4px 0 0;
+        font-size: 0.875rem;
       }
       .stats {
         display: grid;
         grid-template-columns: repeat(auto-fill, minmax(160px, 1fr));
         gap: 16px;
-        margin-bottom: 24px;
+        margin-bottom: 28px;
       }
       .stat-card {
         text-align: center;
+        transition:
+          box-shadow 0.2s ease,
+          transform 0.2s ease;
+        cursor: default;
+      }
+      .stat-card:hover {
+        box-shadow: 0 6px 16px rgba(13, 71, 161, 0.12);
+        transform: translateY(-2px);
       }
       .stat-content {
-        padding: 8px 0;
+        padding: 12px 0 8px;
       }
       .stat-value {
-        font-size: 2rem;
+        font-size: 2.25rem;
         font-weight: 700;
+        line-height: 1;
       }
       .stat-label {
-        color: #666;
-        font-size: 0.85rem;
+        color: #5f6368;
+        font-size: 0.75rem;
+        text-transform: uppercase;
+        letter-spacing: 0.6px;
+        margin-top: 8px;
       }
       .search-field {
         width: 100%;
@@ -140,28 +156,12 @@ import { KeycloakService } from 'keycloak-angular';
       .empty-state {
         text-align: center;
         padding: 64px;
-        color: #999;
+        color: #9aa0a6;
       }
       .empty-state mat-icon {
         font-size: 64px;
         width: 64px;
         height: 64px;
-      }
-      .status-pending {
-        background: #fff3e0 !important;
-        color: #e65100 !important;
-      }
-      .status-in-review {
-        background: #e3f2fd !important;
-        color: #1565c0 !important;
-      }
-      .status-approved {
-        background: #e8f5e9 !important;
-        color: #2e7d32 !important;
-      }
-      .status-rejected {
-        background: #ffebee !important;
-        color: #c62828 !important;
       }
     `,
   ],

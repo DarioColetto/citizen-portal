@@ -104,19 +104,27 @@ import { dniValidator } from '../../../core/validators/tramite.validators';
       .hero {
         text-align: center;
         margin-bottom: 40px;
+        background: linear-gradient(135deg, #e8eaf6 0%, #e3f2fd 100%);
+        border-radius: 16px;
+        padding: 40px 24px;
       }
       .hero-icon {
-        font-size: 64px;
-        width: 64px;
-        height: 64px;
+        font-size: 56px;
+        width: 56px;
+        height: 56px;
         color: #0d47a1;
+        opacity: 0.9;
       }
       h1 {
         color: #0d47a1;
         margin: 16px 0 8px;
+        font-size: 1.75rem;
+        font-weight: 600;
+        letter-spacing: -0.3px;
       }
       .hero p {
-        color: #666;
+        color: #5f6368;
+        margin: 0;
       }
       .search-box {
         display: flex;
@@ -133,11 +141,16 @@ import { dniValidator } from '../../../core/validators/tramite.validators';
         padding: 32px;
       }
       .results h3 {
-        color: #333;
+        color: #3c4043;
+        font-weight: 600;
         margin-bottom: 16px;
       }
       .tramite-card {
         margin-bottom: 16px;
+        transition: box-shadow 0.2s ease;
+      }
+      .tramite-card:hover {
+        box-shadow: 0 4px 16px rgba(13, 71, 161, 0.1);
       }
       mat-card-header {
         display: flex;
@@ -146,7 +159,7 @@ import { dniValidator } from '../../../core/validators/tramite.validators';
       }
       .no-results {
         text-align: center;
-        color: #999;
+        color: #9aa0a6;
         padding: 48px;
       }
       .no-results mat-icon {
@@ -157,28 +170,16 @@ import { dniValidator } from '../../../core/validators/tramite.validators';
       .login-prompt {
         text-align: center;
         margin-top: 40px;
-        color: #666;
+        color: #5f6368;
+        font-size: 0.9rem;
       }
       .login-prompt a {
         color: #0d47a1;
         text-decoration: none;
         font-weight: 500;
       }
-      .status-pending {
-        background: #fff3e0 !important;
-        color: #e65100 !important;
-      }
-      .status-in-review {
-        background: #e3f2fd !important;
-        color: #1565c0 !important;
-      }
-      .status-approved {
-        background: #e8f5e9 !important;
-        color: #2e7d32 !important;
-      }
-      .status-rejected {
-        background: #ffebee !important;
-        color: #c62828 !important;
+      .login-prompt a:hover {
+        text-decoration: underline;
       }
     `,
   ],

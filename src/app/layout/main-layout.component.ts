@@ -62,34 +62,55 @@ import { KeycloakService } from 'keycloak-angular';
         height: 100vh;
       }
       .sidenav {
-        width: 240px;
-        background: #0d47a1;
+        width: 256px;
+        background: linear-gradient(175deg, #1565c0 0%, #0d47a1 55%, #1a237e 100%);
         color: white;
+        border-right: none;
+        box-shadow: 2px 0 8px rgba(0, 0, 0, 0.15);
       }
       .sidenav-header {
         display: flex;
         align-items: center;
         gap: 12px;
-        padding: 24px 16px;
+        padding: 28px 20px 24px;
         font-size: 1rem;
         font-weight: 600;
-        border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+        letter-spacing: 0.3px;
+        border-bottom: 1px solid rgba(255, 255, 255, 0.12);
+      }
+      .sidenav-header mat-icon {
+        font-size: 28px;
+        width: 28px;
+        height: 28px;
+        color: white;
+      }
+      mat-nav-list a {
+        color: white !important;
+        border-left: 3px solid transparent;
+        transition: background 0.15s ease;
+        margin: 2px 8px;
+        border-radius: 6px;
+      }
+      mat-nav-list a mat-icon {
+        color: white !important;
+      }
+      mat-nav-list a:hover {
+        background: rgba(255, 255, 255, 0.1) !important;
+      }
+      .active-link {
+        background: rgba(255, 255, 255, 0.15) !important;
+        border-left: 3px solid white !important;
       }
       .spacer {
         flex: 1;
       }
       .username {
-        margin-right: 8px;
-        font-size: 0.9rem;
+        margin-right: 4px;
+        font-size: 0.875rem;
+        opacity: 0.9;
       }
       .content {
-        padding: 24px;
-      }
-      .active-link {
-        background: rgba(255, 255, 255, 0.15) !important;
-      }
-      mat-nav-list a {
-        color: white;
+        padding: 28px;
       }
     `,
   ],

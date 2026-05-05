@@ -10,13 +10,16 @@ import { environment } from '../environments/environment';
 
 function initializeKeycloak(keycloak: KeycloakService) {
   return () =>
-    keycloak.init({
-      config: environment.keycloak,
-      initOptions: {
-        onLoad: 'check-sso',
-        silentCheckSsoRedirectUri: window.location.origin + '/silent-check-sso.html',
-      },
-    });
+    keycloak
+      .init({
+        config: environment.keycloak,
+        initOptions: {
+          onLoad: 'check-sso',
+          silentCheckSsoRedirectUri: window.location.origin + '/silent-check-sso.html',
+          checkLoginIframe: false,
+        },
+      })
+      .catch(() => false);
 }
 
 export const appConfig: ApplicationConfig = {
