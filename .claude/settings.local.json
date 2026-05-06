@@ -4,7 +4,22 @@
       "Bash(npm install *)",
       "Bash(docker --version)",
       "PowerShell(docker run -p 8080:8080 -e KC_BOOTSTRAP_ADMIN_USERNAME=admin -e KC_BOOTSTRAP_ADMIN_PASSWORD=admin quay.io/keycloak/keycloak:25.0 start-dev)",
-      "PowerShell(docker stop da28fd9dbb78)"
+      "PowerShell(docker stop da28fd9dbb78)",
+      "Bash(npm test *)",
+      "Bash(node -e \"console.log\\(require\\('./node_modules/@typescript-eslint/parser/package.json'\\).version\\)\")",
+      "Bash(node -e \"console.log\\(require\\('./node_modules/@angular-eslint/eslint-plugin/package.json'\\).version\\)\")",
+      "Bash(node -e \"console.log\\(require\\('./node_modules/@typescript-eslint/parser/package.json'\\).peerDependencies\\)\")",
+      "Bash(node -e \"const p = require\\('@angular-eslint/eslint-plugin'\\); console.log\\(Object.keys\\(p\\)\\)\")",
+      "Bash(node -e \"const p = require\\('@angular-eslint/template-parser'\\); console.log\\(Object.keys\\(p\\)\\)\")",
+      "Bash(npm run *)",
+      "Bash(git add *)",
+      "Bash(git commit -m ' *)",
+      "Bash(node -e \"console.log\\(require\\('./node_modules/@angular/core/package.json'\\).version\\)\")",
+      "Bash(npm view *)",
+      "Bash(node -e \"const v=JSON.parse\\(require\\('fs'\\).readFileSync\\('/dev/stdin','utf8'\\)\\); console.log\\(v.filter\\(x=>x.match\\(/^\\(18|19|20|21\\)\\\\./\\)\\).slice\\(-10\\).join\\('\\\\n'\\)\\)\")",
+      "Bash(npx ng *)",
+      "Bash(node -e ' *)",
+      "Bash(node -e \"const k = require\\('keycloak-angular'\\); console.log\\(Object.keys\\(k\\)\\)\")"
     ]
   }
 }

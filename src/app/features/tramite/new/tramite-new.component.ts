@@ -16,7 +16,6 @@ import { dniValidator, emailMatchValidator } from '../../../core/validators/tram
 
 @Component({
   selector: 'app-tramite-new',
-  standalone: true,
   imports: [
     ReactiveFormsModule,
     MatStepperModule,
