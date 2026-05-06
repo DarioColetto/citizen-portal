@@ -2,7 +2,11 @@ import { ApplicationConfig, provideZoneChangeDetection } from '@angular/core';
 import { provideRouter, withComponentInputBinding } from '@angular/router';
 import { provideHttpClient, withInterceptors } from '@angular/common/http';
 import { provideToastr } from 'ngx-toastr';
-import { provideKeycloak, includeBearerTokenInterceptor } from 'keycloak-angular';
+import {
+  provideKeycloak,
+  includeBearerTokenInterceptor,
+  INCLUDE_BEARER_TOKEN_INTERCEPTOR_CONFIG,
+} from 'keycloak-angular';
 import { routes } from './app.routes';
 import { authInterceptor } from './core/interceptors/auth.interceptor';
 import { environment } from '../environments/environment';
@@ -20,6 +24,7 @@ export const appConfig: ApplicationConfig = {
         silentCheckSsoRedirectUri: window.location.origin + '/silent-check-sso.html',
         checkLoginIframe: false,
       },
+      providers: [{ provide: INCLUDE_BEARER_TOKEN_INTERCEPTOR_CONFIG, useValue: [] }],
     }),
   ],
 };

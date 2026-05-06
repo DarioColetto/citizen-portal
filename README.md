@@ -52,6 +52,14 @@ npm run start:dev    # Angular en :4200 con proxy
 
 **1. Iniciar el contenedor**
 
+Con persistencia de datos (recomendado — el realm y usuarios sobreviven reinicios):
+
+```powershell
+docker run -p 8080:8080 -e KEYCLOAK_ADMIN=admin -e KEYCLOAK_ADMIN_PASSWORD=admin -v keycloak_data:/opt/keycloak/data quay.io/keycloak/keycloak:25.0 start-dev
+```
+
+Sin persistencia (los datos se pierden al detener el contenedor):
+
 ```powershell
 docker run -p 8080:8080 -e KEYCLOAK_ADMIN=admin -e KEYCLOAK_ADMIN_PASSWORD=admin quay.io/keycloak/keycloak:25.0 start-dev
 ```
@@ -59,6 +67,8 @@ docker run -p 8080:8080 -e KEYCLOAK_ADMIN=admin -e KEYCLOAK_ADMIN_PASSWORD=admin
 > Nota: Keycloak 25 usa `KEYCLOAK_ADMIN` / `KEYCLOAK_ADMIN_PASSWORD`. Las variables `KC_BOOTSTRAP_ADMIN_*` son de Keycloak 26+.
 
 Esperar hasta ver en el log: `Keycloak 25.0.6 ... started in ...s`
+
+> Si aparece un error en la consola de admin al hacer login, recargá la página (F5) — es un bug transitorio de Keycloak 25.
 
 **2. Crear el Realm**
 
