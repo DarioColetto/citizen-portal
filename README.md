@@ -110,7 +110,7 @@ npm run lint
 
 ## Diagrama de flujo
 
-![Diagrama de flujo](public\diagrama_saas.png)
+![public\diagrama_saas.png](https://github.com/DarioColetto/citizen-portal/blob/main/public/diagrama_saas.png)
 
 
 
