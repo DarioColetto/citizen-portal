@@ -5,11 +5,10 @@ import { MatButtonModule } from '@angular/material/button';
 import { MatIconModule } from '@angular/material/icon';
 import { MatSidenavModule } from '@angular/material/sidenav';
 import { MatListModule } from '@angular/material/list';
-import { KeycloakService } from 'keycloak-angular';
+import Keycloak from 'keycloak-js';
 
 @Component({
   selector: 'app-main-layout',
-  standalone: true,
   imports: [
     RouterOutlet,
     RouterLink,
@@ -116,7 +115,7 @@ import { KeycloakService } from 'keycloak-angular';
   ],
 })
 export class MainLayoutComponent {
-  private keycloak = inject(KeycloakService);
+  private keycloak = inject(Keycloak);
   sidenavOpen = signal(true);
   username = signal('');
 
@@ -130,6 +129,6 @@ export class MainLayoutComponent {
   }
 
   logout(): void {
-    this.keycloak.logout(window.location.origin + '/consulta');
+    this.keycloak.logout({ redirectUri: window.location.origin + '/consulta' });
   }
 }

@@ -14,7 +14,6 @@ import { dniValidator } from '../../../core/validators/tramite.validators';
 
 @Component({
   selector: 'app-tramite-status',
-  standalone: true,
   imports: [
     DatePipe,
     ReactiveFormsModule,

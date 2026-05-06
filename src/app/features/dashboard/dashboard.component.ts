@@ -12,11 +12,10 @@ import { DatePipe } from '@angular/common';
 import { debounceTime, distinctUntilChanged, switchMap } from 'rxjs';
 import { TramiteService } from '../../core/services/tramite.service';
 import { Tramite } from '../../core/models/tramite.model';
-import { KeycloakService } from 'keycloak-angular';
+import Keycloak from 'keycloak-js';
 
 @Component({
   selector: 'app-dashboard',
-  standalone: true,
   imports: [
     ReactiveFormsModule,
     RouterLink,
@@ -168,7 +167,7 @@ import { KeycloakService } from 'keycloak-angular';
 })
 export class DashboardComponent implements OnInit {
   private tramiteService = inject(TramiteService);
-  private keycloak = inject(KeycloakService);
+  private keycloak = inject(Keycloak);
 
   tramites = signal<Tramite[]>([]);
   stats = signal<{ label: string; value: number; color: string }[]>([]);
