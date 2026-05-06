@@ -8,7 +8,6 @@ import { MatIconModule } from '@angular/material/icon';
 import { MatCardModule } from '@angular/material/card';
 import { MatChipsModule } from '@angular/material/chips';
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
-import { debounceTime, distinctUntilChanged, switchMap, Subject } from 'rxjs';
 import { TramiteService } from '../../../core/services/tramite.service';
 import { Tramite } from '../../../core/models/tramite.model';
 import { dniValidator } from '../../../core/validators/tramite.validators';

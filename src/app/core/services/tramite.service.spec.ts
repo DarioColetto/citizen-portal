@@ -48,7 +48,13 @@ describe('TramiteService', () => {
   });
 
   it('create() POSTs with pending status', () => {
-    const { id, status, createdAt, updatedAt, ...payload } = mockTramite;
+    const {
+      id: _id,
+      status: _status,
+      createdAt: _createdAt,
+      updatedAt: _updatedAt,
+      ...payload
+    } = mockTramite;
     service.create(payload).subscribe(t => expect(t.status).toBe('pending'));
     const req = httpMock.expectOne(r => r.url.includes('/tramites'));
     expect(req.request.method).toBe('POST');
