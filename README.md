@@ -106,6 +106,55 @@ npm run test:coverage
 npm run lint
 ```
 
+## Diagrama de flujo
+
+```mermaid
+flowchart TD
+    U([Usuario]) --> R{¿Ruta?}
+
+    R -->|/consulta| PUB[Vista pública\nConsulta por DNI]
+    R -->|/ · /dashboard\n/tramites/nuevo| G[authGuard]
+
+    G -->|autenticado| ML[MainLayout\nSidenav + Toolbar]
+    G -->|no autenticado| KC[Keycloak\nOAuth2 · OIDC]
+    KC -->|token JWT| ML
+
+    ML -->|interceptor adjunta\nBearer token| API[(json-server\n:3000)]
+    ML --> NAV{Navegación}
+
+    NAV -->|/dashboard| DB[DashboardComponent]
+    NAV -->|/tramites/nuevo| NW[TramiteNewComponent]
+
+    %% Dashboard
+    DB --> DB1[loadUserProfile\nKeycloak]
+    DB --> DB2[TramiteService.getAll]
+    DB2 -->|GET /tramites| API
+    API --> DB3[Tabla de trámites\nStats cards]
+    DB --> DB4[searchControl\ndebounceTime 400ms\ndistinctUntilChanged\nswitchMap]
+    DB4 -->|GET /tramites?q=| API
+
+    %% Nuevo trámite
+    NW --> ST[Stepper lineal]
+    ST --> P1[Paso 1 · Datos personales\nDNI validator · email match]
+    P1 --> P2[Paso 2 · Tipo de trámite\ntipo · título · descripción]
+    P2 --> P3[Paso 3 · Documentos\nFormArray · ngx-image-compress]
+    P3 --> P4[Paso 4 · Confirmación\nresumen del trámite]
+    P4 --> SUB[TramiteService.create]
+    SUB -->|POST /tramites| API
+    API --> PDF[pdfmake\ncomprobante.pdf]
+    API --> TST[ngx-toastr\nnotificación]
+    TST --> DASH[Router → /dashboard]
+
+    %% Vista pública
+    PUB --> V1[dniControl\ndniValidator]
+    V1 --> V2[TramiteService.getByDni]
+    V2 -->|GET /tramites?applicantDni=| API
+    API --> V3[Cards de resultado\ncon estado y observaciones]
+
+    %% Logout
+    ML --> LO[Keycloak logout\n→ /consulta]
+```
+
 ## Rutas
 
 | Ruta | Acceso | Descripción |
